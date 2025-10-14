@@ -41,10 +41,10 @@ void sensor_fft_task(void *pvParameters){
             int raw;
             adc_oneshot_read(adc1_handle, ADC_CHANNEL_6, &raw);
             sensorData[i] = (float)raw;
-            esp_rom_delay_us(100); // proper microsecond delay
+            esp_rom_delay_us(100);
         }
 
-        // Placeholder FFT
+        // Placeholder FFT, FFT is harder to make than i thought
         for (int i = 0; i < FFT_SIZE; i++) {
             latestFFT[i] = sensorData[i];
         }
@@ -119,3 +119,4 @@ void app_main(void){
 
     ESP_LOGI(TAG, "Dual-core UDP tasks started");
 }
+
