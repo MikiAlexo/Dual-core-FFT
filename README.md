@@ -11,6 +11,7 @@ u can find the UPD client here:
 - ESP-wroom-32 (or any generic esp32 board for that matter).
 - A UDP receiver ( clone the code from here: ).
 - Potentiometer.
+- Platform IO
 
   ## Wiring
   - Connect the the VCC( any of the two pins on the edge) of the pot to 3.3V of esp and the - to GND of esp
