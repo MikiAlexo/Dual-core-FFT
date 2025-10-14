@@ -4,6 +4,6 @@ Core0 handles networking related tasks while core1 handles reding sensor data an
 
 # Reqirements
 
-ESP-wroom-32 (or any generic esp32 board for that matter).
-A UDP receiver ( clone the code from here: ).
-Potentiometer.
+- ESP-wroom-32 (or any generic esp32 board for that matter).
+- A UDP receiver ( clone the code from here: ).
+- Potentiometer.
