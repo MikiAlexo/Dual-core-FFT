@@ -17,10 +17,10 @@ u can find the UPD client here: https://github.com/MikiAlexo/UDP-client
   - Connect the the VCC( any of the two pins on the edge) of the pot to 3.3V of esp and the - to GND of esp
     the signal of the pot( the middle one) to ADC1-CH6( GPIO 34) of esp.
 
-  here's the pinouts of the esp32-wroom
+  here's the pinouts of the esp32-wroom and the wiring
   
 ![adc-pins-esp32-f](https://github.com/user-attachments/assets/9e49eb00-d256-40f6-aa3b-319cf18c96fe)
 
- Wiring diagram
+
 <img width="742" height="749" alt="image" src="https://github.com/user-attachments/assets/24cf9056-de60-42e2-986a-71a1bced3415" />
 
