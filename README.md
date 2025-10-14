@@ -4,12 +4,12 @@ Core0 handles networking related tasks while core1 handles reding sensor data an
 
 For the networking part i'll be using UPD protocol. why? because i'm lazy to setup HTTP client and i already have a UDP client.
 
-u can find the UPD client here: 
+u can find the UPD client here: https://github.com/MikiAlexo/UDP-client
 
 # Reqirements
 
 - ESP-wroom-32 (or any generic esp32 board for that matter).
-- A UDP receiver ( clone the code from here: ).
+- A UDP client.
 - Potentiometer.
 - Platform IO
 
@@ -20,3 +20,7 @@ u can find the UPD client here:
   here's the pinouts of the esp32-wroom
   
 ![adc-pins-esp32-f](https://github.com/user-attachments/assets/9e49eb00-d256-40f6-aa3b-319cf18c96fe)
+
+ Wiring diagram
+<img width="742" height="749" alt="image" src="https://github.com/user-attachments/assets/24cf9056-de60-42e2-986a-71a1bced3415" />
+
