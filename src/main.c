@@ -7,12 +7,12 @@
 #include "esp_adc/adc_oneshot.h"
 #include "lwip/sockets.h"
 #include "lwip/inet.h"
-#include "esp_dsp.h"
+// #include "esp_dsp.h"
 #include "fft_wA.h"
 
 #define FFT_SIZE 256
 #define UDP_PORT 8888
-#define UDP_IP   "192.168.1.100"  // run ipconfig on cmd to find ur's
+#define UDP_IP   "192.168.1.100"
 
 static const char* TAG = "DualCoreUDP";
 
@@ -36,25 +36,27 @@ void sensor_fft_task(void *pvParameters){
     };
     adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_6, &chan_cfg);
 
+    float sensorData[FFT_SIZE];
+    float fftOutput[FFT_SIZE]; 
+
     while (1) {
-        float sensorData[FFT_SIZE];
 
         for (int i = 0; i < FFT_SIZE; i++) {
             int raw;
             adc_oneshot_read(adc1_handle, ADC_CHANNEL_6, &raw);
             sensorData[i] = (float)raw;
-            esp_rom_delay_us(100); // proper microsecond delay
+            esp_rom_delay_us(100); 
         }
 
-        // Placeholder FFT
+        
         for (int i = 0; i < FFT_SIZE; i++) {
-            latestFFT[i] = sensorData[i];
+            fft_compute(sensorData, fftOutput, FFT_SIZE);
         }
 
         fftReady = true;
         ESP_LOGI(TAG, "FFT computed on Core %d", xPortGetCoreID());
 
-        vTaskDelay(pdMS_TO_TICKS(30000)); // 30s interval
+        vTaskDelay(pdMS_TO_TICKS(30000)); 
     }
 }
 
@@ -73,7 +75,7 @@ void send_udp_task(void *pvParameters){
     dest_addr.sin_port = htons(UDP_PORT);
 
     while (1) {
-        vTaskDelay(pdMS_TO_TICKS(300000)); // 5 min
+        vTaskDelay(pdMS_TO_TICKS(300000));
 
         if (fftReady) {
             char msg[2048];
