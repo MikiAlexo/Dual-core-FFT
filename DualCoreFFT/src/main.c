@@ -18,7 +18,7 @@ static const char* TAG = "DualCoreUDP";
 float latestFFT[FFT_SIZE];
 volatile bool fftReady = false;
 
-// core1
+
 void sensor_fft_task(void *pvParameters){
 
     adc_oneshot_unit_handle_t adc1_handle;
@@ -52,11 +52,11 @@ void sensor_fft_task(void *pvParameters){
         fftReady = true;
         ESP_LOGI(TAG, "FFT computed on Core %d", xPortGetCoreID());
 
-        vTaskDelay(pdMS_TO_TICKS(30000)); // 30s interval
+        vTaskDelay(pdMS_TO_TICKS(30000)); 
     }
 }
 
-//core0
+
 void send_udp_task(void *pvParameters){
     struct sockaddr_in dest_addr;
     int sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_IP);
@@ -71,7 +71,7 @@ void send_udp_task(void *pvParameters){
     dest_addr.sin_port = htons(UDP_PORT);
 
     while (1) {
-        vTaskDelay(pdMS_TO_TICKS(300000)); // 5 min
+        vTaskDelay(pdMS_TO_TICKS(300000));
 
         if (fftReady) {
             char msg[2048];
@@ -119,4 +119,5 @@ void app_main(void){
 
     ESP_LOGI(TAG, "Dual-core UDP tasks started");
 }
+
 
