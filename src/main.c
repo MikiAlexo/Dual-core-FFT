@@ -30,10 +30,10 @@ portMUX_TYPE fft_mux = portMUX_INITIALIZER_UNLOCKED;  // for thread safety
 static void wifi_event_handler(void* arg, esp_event_base_t event_base,int32_t event_id, void* event_data){
     if (event_id == WIFI_EVENT_AP_STACONNECTED) {
         wifi_event_ap_staconnected_t* event = (wifi_event_ap_staconnected_t*) event_data;
-        // ESP_LOGI(TAG, "Client connected: "MACSTR, MAC2STR(event->mac));
+        ESP_LOGI(TAG, "Client connected: "MACSTR, MAC2STR(event->mac));
     } else if (event_id == WIFI_EVENT_AP_STADISCONNECTED) {
         wifi_event_ap_stadisconnected_t* event = (wifi_event_ap_stadisconnected_t*) event_data;
-        // ESP_LOGI(TAG, "Client disconnected: "MACSTR, MAC2STR(event->mac));
+        ESP_LOGI(TAG, "Client disconnected: "MACSTR, MAC2STR(event->mac));
     }
 }
 
