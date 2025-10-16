@@ -12,7 +12,6 @@ void fft_compute(float* input, float* output, int size) {
         imag[i] = 0.0f;
     }
 
-    // Bit-reversal permutation
     int j = 0;
     for (int i = 0; i < size; i++) {
         if (i < j) {
